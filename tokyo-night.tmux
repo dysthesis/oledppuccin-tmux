@@ -53,12 +53,18 @@ current_path="#($SCRIPTS_PATH/path-widget.sh #{pane_current_path})"
 battery_status="#($SCRIPTS_PATH/battery-widget.sh)"
 
 #+--- Bars LEFT ---+
+# Delimiters
+LEFT_DELIM="#[fg=${THEME[background]},bg=${THEME[blue]}]"
+RIGHT_DELIM="#[fg=${THEME[blue]},bg=${THEME[background]}]"
 # Session name
-tmux set -g status-left "#[fg=${THEME[bblack]},bg=${THEME[blue]},bold] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[bold,nodim]#S "
+tmux set -g status-left "${LEFT_DELIM}#[fg=${THEME[bblack]},bg=${THEME[blue]},bold] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[bold,nodim]#S ${RIGHT_DELIM}"
 
 #+--- Windows ---+
+# Delimiters
+LEFT_DELIM_FOCUS="#[fg=${THEME[bblack]},bg=${THEME[green]}]"
+RIGHT_DELIM_FOCUS="#[fg=${THEME[green]},bg=${THEME[background]}]"
 # Focus
-tmux set -g window-status-current-format "$RESET#[fg=${THEME[green]},bg=${THEME[bblack]}] #{?#{==:#{pane_current_command},ssh},󰣀 , }#[fg=${THEME[foreground]},bold,nodim]$window_number#W#[nobold]#{?window_zoomed_flag, $zoom_number, $custom_pane}#{?window_last_flag, , }"
+tmux set -g window-status-current-format "$RESET${LEFT_DELIM_FOCUS}#[fg=${THEME[green]},bg=${THEME[bblack]}] #{?#{==:#{pane_current_command},ssh},󰣀 , }#[fg=${THEME[foreground]},bold,nodim]$window_number#W#[nobold]#{?window_zoomed_flag, $zoom_number, $custom_pane}#{?window_last_flag, , }${RIGHT_DELIM_FOCUS}"
 # Unfocused
 tmux set -g window-status-format "$RESET#[fg=${THEME[foreground]}] #{?#{==:#{pane_current_command},ssh},󰣀 , }${RESET}$window_number#W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane}#[fg=${THEME[yellow]}]#{?window_last_flag,󰁯  , }"
 
