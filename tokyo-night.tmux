@@ -61,7 +61,7 @@ tmux set -g status-left "${LEFT_DELIM}#[fg=${THEME[bblack]},bg=${THEME[blue]},bo
 
 #+--- Windows ---+
 # Delimiters
-LEFT_DELIM_FOCUS="#[fg=${THEME[bblack]},bg=${THEME[green]}]"
+LEFT_DELIM_FOCUS="#[fg=${THEME[background]},bg=${THEME[green]}]"
 RIGHT_DELIM_FOCUS="#[fg=${THEME[green]},bg=${THEME[background]}]"
 # Focus
 tmux set -g window-status-current-format "$RESET${LEFT_DELIM_FOCUS}#[fg=${THEME[green]},bg=${THEME[bblack]}] #{?#{==:#{pane_current_command},ssh},󰣀 , }#[fg=${THEME[foreground]},bold,nodim]$window_number#W#[nobold]#{?window_zoomed_flag, $zoom_number, $custom_pane}#{?window_last_flag, , }${RIGHT_DELIM_FOCUS}"
